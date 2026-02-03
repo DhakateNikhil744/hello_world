@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nikhil Dhakate | Terminal Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    color: #00ff00;
+    font-family: monospace;
+}
+
+.terminal {
+    padding: 20px;
+    height: 100vh;
+}
+
+.header {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.output div {
+    margin: 5px 0;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    background: black;
+    border: none;
+    color: #00ff00;
+    outline: none;
+    font-family: monospace;
+    font-size: 16px;
+    width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+    <div class="header">nikhil@portfolio:~$ type <b>help</b></div>
+    <div class="output" id="output"></div>
+    <div class="input-line">
+        <span>$&nbsp;</span>
+        <input type="text" id="command" autofocus>
+    </div>
+</div>
+
+<script>
+const output = document.getElementById("output");
+const command = document.getElementById("command");
+
+command.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        execute(command.value);
+        command.value = "";
+    }
+});
+
+function execute(cmd) {
+    output.innerHTML += `<div>$ ${cmd}</div>`;
+
+    switch (cmd.toLowerCase()) {
+        case "help":
+            output.innerHTML += "<div>Commands: about | skills | projects | contact | clear</div>";
+            break;
+        case "about":
+            output.innerHTML += "<div>👋 I am Nikhil Dhakate, a DevOps & Linux enthusiast.</div>";
+            break;
+        case "skills":
+            output.innerHTML += "<div>⚙️ Linux, Docker, AWS, Git, HTML, CSS, JavaScript</div>";
+            break;
+        case "projects":
+            output.innerHTML += "<div>📦 AWS Deployment, Dockerized Apps, Linux Automation</div>";
+            break;
+        case "contact":
+            output.innerHTML += "<div>📧 Email: nikhildhakate@example.com</div>";
+            break;
+        case "clear":
+            output.innerHTML = "";
+            break;
+        default:
+            output.innerHTML += "<div>❌ Command not found</div>";
+    }
+}
+</script>
+
+</body>
+</html>
+
