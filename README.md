@@ -1,2 +1,2 @@
 # hello_world
-setting up git
+This is my first repository 
